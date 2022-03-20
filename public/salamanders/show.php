@@ -10,6 +10,7 @@ THEN assign it the value 1
 
 Hint: The line starts with $id=
 ------------------------------------------------------------------ */
+$id = $_GET['id'] ?? '1';
 
 $page_title = 'Salamander Details';
 include(SHARED_PATH . '/salamander-header.php'); 
@@ -34,5 +35,8 @@ Create a link that does the following
 * Make the link text "Back to Salamander List"
 * Surround it with <p> tags to give it a little space
 ------------------------------------------------------------------>
+<p>Page ID: <?php echo h($id); ?></p>
+<p><a href="<?php echo url_for('salamanders/index.php'); ?>">&laquo; Back to Salamander List</a></p>
+
 
 <?php include(SHARED_PATH . '/salamander-footer.php'); ?>
