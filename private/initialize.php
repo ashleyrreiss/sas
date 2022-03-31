@@ -22,5 +22,9 @@ ob_start(); // output buffering is turned on
   define("WWW_ROOT", $doc_root);
 
   require_once('functions.php');
+  require_once('database.php');
+  require_once('query-functions.php');
+
+  $db = db_connect();
 
 ?>
