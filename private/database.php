@@ -29,4 +29,4 @@ function confirm_result_set($result_set) {
   }  
 }
 
-?>
+?> 

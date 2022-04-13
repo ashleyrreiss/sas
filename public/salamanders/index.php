@@ -1,4 +1,5 @@
-<?php require_once('../../private/initialize.php');
+<?php 
+require_once('../../private/initialize.php');
 
 $salamander_set = find_all_salamanders();
 
@@ -16,9 +17,8 @@ require_once(SHARED_PATH . '/salamander-header.php');
   <tr>
     <th>ID</th>
     <th>Name</th>
-    <th>&nbsp;</th>
-    <th>&nbsp;</th>
-    <th>&nbsp;</th>
+    <th>Habitat</th>
+    <th>Description</th>
   </tr>
 
       <?php while($salamander = mysqli_fetch_assoc($salamander_set)) { ?>
