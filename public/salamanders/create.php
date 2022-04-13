@@ -1,14 +1,19 @@
 <?php 
+
 require_once('../../private/initialize.php'); 
 
 if(is_post_request()) {
-  $salamanderName = $_POST['salamanderName'] ?? '';
+  $name = $_POST['name'] ?? '';
+  $habitat = $_POST['habitat'] ?? '';
+  $description = $_POST['description'] ?? '';
 
-  echo "Form parameters<br>";
-  echo "Salamander name: " . $salamanderName . "<br>";
+  $result = insert_salamander($name, $habitat, $description);
+  $newID = mysqli_insert_id($db);
+  redirect_to(url_for('salamanders/show.php?id=' . $newID));
+  
 }
 else {
-  redirect_to(url_for('/salamanders/new.php'));
+  redirect_to(url_for('salamanders/new.php'));
 }
 
 ?>
