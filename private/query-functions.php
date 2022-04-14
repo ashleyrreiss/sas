@@ -22,15 +22,15 @@ function find_salamander_by_id($id) {
   return $salamanders;
 }
 
-function insert_salamander($name, $habitat, $description) {
+function insert_salamander($salamanders) {
   global $db;
 
   $sql = "INSERT INTO salamander ";
   $sql .= "(name, habitat, description) ";
   $sql .= "VALUES (";
-  $sql .= "'" . $name . "', ";
-  $sql .= "'" . $habitat . "', ";
-  $sql .= "'" . $description . "'";
+  $sql .= "'" . $salamanders['name'] . "', ";
+  $sql .= "'" . $salamanders['habitat'] . "', ";
+  $sql .= "'" . $salamanders['description'] . "'";
   $sql .= ")";
   $result = mysqli_query($db, $sql);
 
