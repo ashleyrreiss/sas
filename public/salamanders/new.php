@@ -11,7 +11,7 @@ require_once(SHARED_PATH . '/salamander-header.php');?>
   <div class="salamander-new">
     <h1>Create Salamander</h1>
 
-    <form action="<?php echo url_for('/salamanders/create.php'); ?>" method="post">
+    <form action="<?php echo url_for('salamanders/create.php'); ?>" method="post">
       <label for="name">Name:</label>
       <input type="text" name="name" value=""><br>
       
