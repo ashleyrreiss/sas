@@ -7,10 +7,12 @@ if(!isset($_GET['id'])) {
   }
   $id = $_GET['id'];
   
-  $salamander = find_salamander_by_id($id);
-  
   if(is_post_request()) {
-  
+    delete_salamander($id);
+    redirect_to(url_for('salamanders/index.php'));
+  }
+  else {
+    $salamanders = find_salamander_by_id($id);
   }
   
   $pageTitle = 'Delete Salamander'; ?>
@@ -18,9 +20,9 @@ if(!isset($_GET['id'])) {
     <a href="<?php echo url_for('salamanders/index.php'); ?>">&laquo; Back to Salamanders</a>
       <h1>Delete Salamander</h1>
       <p>Are you sure you want to delete this salamander?</p>
-      <p><?php echo h($salamander['name']); ?></p>
+      <p><?php echo h($salamanders['name']); ?></p>
   
-      <form action="<?php echo url_for('salamanders/delete.php?id=' . h(u($salamander['id']))); ?>" method="post">
+      <form action="<?php echo url_for('salamanders/delete.php?id=' . h(u($salamanders['id']))); ?>" method="post">
           <input type="submit" name="commit" value="Delete Salamander" />
       </form>
 
