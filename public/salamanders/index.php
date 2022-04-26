@@ -5,7 +5,7 @@ $salamander_set = find_all_salamanders();
 
 $page_title = 'Salamanders';
 
-require_once(SHARED_PATH . '/salamander-header.php');
+include(SHARED_PATH . '/salamander-header.php'); 
 
 ?>
 
