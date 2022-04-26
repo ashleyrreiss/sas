@@ -10,6 +10,11 @@ ob_start(); // output buffering is turned on
   define("PUBLIC_PATH", PROJECT_PATH . '/public');
   define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
+  header('Expires: 0');
+  header('Cache-Control: no-store, no-cache, must-revalidate');
+  header('Cache-Control: post-check=0, pre-check=0', FALSE);
+  header('Pragma: no-cache');
+
   // Assign the root URL to a PHP constant
   // * Do not need to include the domain
   // * Use same document root as webserver
