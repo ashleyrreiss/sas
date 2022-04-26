@@ -22,8 +22,32 @@ function find_salamander_by_id($id) {
   return $salamanders;
 }
 
+function validate_salamander($salamander) {
+  $errors = [];
+ 
+  if(is_blank($salamander['name'])) {
+    $errors[] = "Name cannot be blank.";
+  }
+  elseif(!has_length($salamander['name'], ['min' => 2, 'max' => 255])) {
+    $errors[] = "Name must be between 2 and 255 characters.";
+  }
+  if(is_blank($salamander['description'])) {
+    $errors[] = "Description cannot be blank.";
+  }
+  if(is_blank($salamander['habitat'])) {
+    $errors[] = "Habitat cannot be blank.";
+  }
+ 
+  return $errors;
+ }
+ 
 function insert_salamander($salamanders) {
   global $db;
+
+  $errors = validate_salamander($salamanders);
+  if(!empty($errors)) {
+    return $errors;
+  }
 
   $sql = "INSERT INTO salamander ";
   $sql .= "(name, habitat, description) ";
@@ -47,6 +71,11 @@ function insert_salamander($salamanders) {
 
 function update_salamander($salamanders) {
   global $db;
+
+  $errors = validate_salamander($salamanders);
+  if(!empty($errors)) {
+    return $errors;
+  }
 
   $sql = "UPDATE salamander SET ";
   $sql .= "name='" . $salamanders['name'] . "', ";

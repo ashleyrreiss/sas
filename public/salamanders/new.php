@@ -1,5 +1,25 @@
 <?php 
 require_once('../../private/initialize.php'); 
+
+if(is_post_request()) {
+
+  $salamanders = [];
+  $salamanders['name'] = $_POST['name'] ?? '';
+  $salamanders['habitat'] = $_POST['habitat'] ?? '';
+  $salamanders['description'] = $_POST['description'] ?? '';
+
+  $result = insert_salamander($salamanders);
+  if($result === true) {
+    $newID = mysqli_insert_id($db);
+    redirect_to(url_for('salamanders/show.php?id=' . $newID));
+  }
+  else {
+    $errors = $result;
+  }
+}
+else {
+  
+}
 ?>
 
 <?php $page_title = 'Create salamander'; 
@@ -11,7 +31,9 @@ require_once(SHARED_PATH . '/salamander-header.php');?>
   <div class="salamander-new">
     <h1>Create Salamander</h1>
 
-    <form action="<?php echo url_for('salamanders/create.php'); ?>" method="post">
+    <?php echo display_errors($errors)?>
+
+    <form action="<?php echo url_for('salamanders/new.php'); ?>" method="post">
       <label for="name">Name:</label>
       <input type="text" name="name" value=""><br>
       

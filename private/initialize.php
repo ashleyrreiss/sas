@@ -29,7 +29,10 @@ ob_start(); // output buffering is turned on
   require_once('functions.php');
   require_once('database.php');
   require_once('query-functions.php');
+  require_once('validation-functions.php');
 
   $db = db_connect();
+
+  $errors = [];
 
 ?>
